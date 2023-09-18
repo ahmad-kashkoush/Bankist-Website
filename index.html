@@ -11,8 +11,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/all.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/framework.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>Bankist | When Banking meets Minimalist</title>
   </head>
   <body>
@@ -20,14 +20,20 @@
       <!-- ! Start Nav -->
       <nav>
         <div class="container">
-          <div class="logo">
+          <div class="logo" non-standard="non-standard" data-version="1.0">
             <img src="img/logo.png" alt="" />
           </div>
           <ul class="links off-mobile">
             <li><a href="#features">features</a></li>
             <li><a href="#operations">operations</a></li>
-            <li><a href="#testimonials">testimonials</a></li>
-            <li><a href="#open-account" class="btn">open-account</a></li>
+            <li>
+              <a href="#testimonials">testimonials</a>
+            </li>
+            <li>
+              <a href="#open-account" class="btn btn--show-modal"
+                >open-account</a
+              >
+            </li>
             <li>
               <button class="theme-toggle">
                 <i class="fa-solid fa-circle-half-stroke"></i>
@@ -218,7 +224,9 @@
             today!
           </h1>
         </div>
-        <button class="btn bg-green">Open your free account today!</button>
+        <button class="btn bg-green btn--show-modal">
+          Open your free account today!
+        </button>
       </div>
     </section>
     <!-- ? End signup -->
@@ -240,7 +248,23 @@
         >
       </div>
     </footer>
-    <div class="overlay"></div>
+    <div class="modal hidden">
+      <button class="btn--close-modal">&times;</button>
+      <h2 class="modal__header">
+        Open your bank account <br />
+        in just <span class="highlight">5 minutes</span>
+      </h2>
+      <form class="modal__form">
+        <label>First Name</label>
+        <input type="text" />
+        <label>Last Name</label>
+        <input type="text" />
+        <label>Email Address</label>
+        <input type="email" />
+        <button class="btn">Next step &rarr;</button>
+      </form>
+    </div>
+    <div class="overlay hidden"></div>
     <script src="script.js"></script>
   </body>
 </html>

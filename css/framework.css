@@ -43,27 +43,19 @@
 .btn {
   padding: 1rem 1.5rem;
   border-radius: 27px;
+
+  /* display: inline-block; */
+  background-color: var(--color-primary);
+  /* font-size: 1.6rem; */
+  font-family: inherit;
+  font-weight: 500;
+  /* border: none; */
+  /* padding: 1.25rem 4.5rem; */
+  /* border-radius: 10rem; */
+  cursor: pointer;
+  transition: all 0.3s;
 }
 /* ? End  Btn */
-
-.overlay {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100vw;
-  min-height: 100vh;
-  z-index: 1;
-  background-color: rgb(0 0 0 /0.7);
-}
-@media (max-width: 700px) {
-  .off-mobile {
-    display: none !important;
-  }
-  .show-mobile {
-    display: block !important;
-  }
-}
 
 /* ? End  Components */
 /* ! Start Colors */
@@ -80,3 +72,8 @@
   background-color: #ff585f;
 }
 /* ? End  Colors */
+@media (max-width: 700px) {
+  .off-mobile {
+    display: none !important;
+  }
+}
