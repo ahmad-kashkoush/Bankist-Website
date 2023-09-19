@@ -19,11 +19,14 @@ const openMenu = function () {
     navLinks.classList.remove('off-mobile');
     toggleMenu.classList.add('c-white');
     overlay.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
 }
 const closeMenu = function () {
     navLinks.classList.add('off-mobile');
     toggleMenu.classList.remove('c-white');
     overlay.classList.add('hidden');
+    document.body.style.overflow = 'auto';
+
 }
 let opened = false;
 const toggleMenuFun = () => {
@@ -32,6 +35,11 @@ const toggleMenuFun = () => {
     opened = !opened;
 }
 toggleMenu.addEventListener('click', toggleMenuFun);
+document.addEventListener('click', function (e) {
+    if (e.target.classList.contains('overlay')
+        || e.target.classList.contains('nav_link') && !navLinks.classList.contains('off-mobile'))
+        closeMenu();
+});
 // ! Modal Window 🪟
 
 
@@ -39,11 +47,13 @@ const openModal = function () {
     modal.classList.remove('hidden');
     overlay.classList.remove('hidden');
     overlay.classList.remove('show-mobile');
+    document.body.style.overflow = 'hidden';
 };
 
 const closeModal = function () {
     modal.classList.add('hidden');
     overlay.classList.add('hidden');
+    document.body.style.overflow = 'auto';
 };
 
 btnsOpenModal.forEach((btn) => btn.addEventListener('click', openModal));
