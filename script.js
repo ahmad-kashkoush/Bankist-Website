@@ -101,6 +101,53 @@ cookieMessage.style.height =
     Number.parseFloat(getComputedStyle(cookieMessage).height)
     + 30 + 'px';
 
+
+
+
+//  
+// If you clicked 
+
+// 🔗🔗🔗 Page Navigation My code
+// document.querySelectorAll('nav .links li a').forEach(function (el) {
+//     el.addEventListener('click', function (e) {
+//         e.preventDefault();
+//         //  select element I want to scroll to
+
+//         const sec = document.querySelector(this.getAttribute('href'))
+//         sec.scrollIntoView({ behavior: 'smooth' });
+//     })
+// })
+//  In the above code you've create a function for each element which will fuck the performance
+// sol : Event Delegation ⭐⭐⭐
+navLinks.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (e.target.classList.contains('nav_link')) {
+        const sec = document.querySelector(e.target.getAttribute('href'))
+        sec.scrollIntoView({ behavior: 'smooth' });
+        console.log('Love Event Delegation');
+    }
+})
+
+// Operations tab ⭐⭐⭐⭐
+// get buttons using event delegation 
+document
+    .querySelector('.operations__tab-container')
+    .addEventListener('click', function (e) {
+        const clicked = e.target.closest('.operations__tab');// so If I clicked on child I get the tab also
+        if (!clicked) return;
+
+        const curContentActive = document.querySelector('.operations .operations__content--active');
+        const curTabActive = clicked.parentNode.querySelector('.operations__tab--active');
+        const targetContentActive = curContentActive.parentNode.querySelector(`.operations__content--${clicked.dataset.tab}`);
+        if (clicked !== curTabActive) {
+            curContentActive.classList.remove('operations__content--active')
+            curTabActive.classList.remove('operations__tab--active')
+            targetContentActive.classList.add('operations__content--active')
+            clicked.classList.add('operations__tab--active')
+
+        }
+
+    });
 //  setProperty 
 // document.documentElement.style.setProperty('--color-primary', 'red');
 
