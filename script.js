@@ -148,39 +148,55 @@ document
         }
 
     });
+//  Menu fading when hover on one of the links
+const changeOpacity = function (e, opacity) {
+    if (e.target.classList.contains('nav_link')) {
+        const targetLink = e.target;
+        const siblings = targetLink.closest('.links').querySelectorAll('a');
+        const logo = targetLink.closest('.container').querySelector('img');
+        logo.style.opacity = this;
+        siblings.forEach((link) => {
+            if (link !== targetLink) link.style.opacity = this;
+        })
+    }
+
+}
+document.querySelector('nav .container')
+    .addEventListener('mouseover', changeOpacity.bind(.5));
+
+document.querySelector('nav .container')
+    .addEventListener('mouseout', changeOpacity.bind(1));
+
+
+// LEC ## Dom Traversing 
+// const h1 = document.querySelector(".hero .container h1");
+// // DownWards select childs
+// // for direct children only
+// console.log(h1.childNodes);
+// console.log(h1.children);
+// h1.firstElementChild.style.color = "orangered";
+// h1.lastElementChild.style.color = "blue";
+// // upwards for parent
+// console.log(h1.parentElement);
+
+// [...h1.parentElement.children].forEach(ele => {
+//     if (ele !== h1) {
+//         ele.style.backgroundColor = "#262a33";
+//         console.log("hello");
+//     }
+// })
 //  setProperty 
 // document.documentElement.style.setProperty('--color-primary', 'red');
 
-const logo = document.querySelector('.logo')
+// const logo = document.querySelector('.logo')
 
-// Attributes 
-console.log(logo.className);
-// non-standard
-console.log(logo.nonStandard);// undefined
+// // Attributes 
+// console.log(logo.className);
+// // non-standard
+// console.log(logo.nonStandard);// undefined
 
-// getAttribute => returns it as written in html
-console.log(logo.getAttribute('non-standard'));// will get easily
-// dataset
-console.log(logo.dataset.version);// data-version
-
-
-
-//  Learn More smooth scroll
-const featuresSection = document.querySelector('#features');
-const btnScroll = document.querySelector('.btn-scroll');
-btnScroll.addEventListener('click',
-    function (e) {
-        e.preventDefault();
-        const featuresCord = featuresSection.getBoundingClientRect();
-        // console.log(featuresCord);
-        // !Old School Method
-        // window.scrollTo(
-        //     {
-        //         left: featuresCord.left + window.pageXOffset,
-        //         top: featuresCord.top + window.pageYOffset,
-        //         behavior: 'smooth',
-        //     }
-        // );
-        // ! Easier 
-        featuresSection.scrollIntoView({ behavior: 'smooth' });
-    })
+// // getAttribute => returns it as written in html
+// console.log(logo.getAttribute('non-standard'));// will get easily
+// // dataset
+// console.log(logo.dataset.version);// data-version
+//
