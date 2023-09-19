@@ -80,7 +80,7 @@ cookieMessage.classList.add('cookie-message')
 //  insertAdjacentHtml [before begin, after begin, before end, after end]
 // header.insertAdjacentElement('beforeend', cookieMessage)
 //   you can also use these methods [before, prepend, append, after]
-header.append(cookieMessage);
+document.querySelector('header .hero ').append(cookieMessage);
 // ! removing it  on click
 document.querySelector('.btn--close--cookie')
     .addEventListener('click', function () {
