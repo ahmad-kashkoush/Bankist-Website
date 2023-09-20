@@ -55,9 +55,14 @@ header {
 nav {
   width: 100%;
   background-color: #f3f3f3;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
+nav.sticky {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
 nav .container {
   display: flex;
   justify-content: space-between;
@@ -191,6 +196,7 @@ header .hero .img-holder > img {
 .features {
   padding-bottom: 10rem;
   padding-top: 10rem;
+  transition: 1s;
 
   border-bottom: 0.1rem solid #ddd;
 }
@@ -276,6 +282,7 @@ header .hero .img-holder > img {
 .operations {
   padding-top: 10rem;
   padding-bottom: 10rem;
+  transition: 1s;
   border-bottom: 0.1rem solid #ddd;
 }
 .operations-container {
@@ -384,6 +391,7 @@ header .hero .img-holder > img {
 .testimonials {
   padding-top: 15rem;
   padding-bottom: 15rem;
+  transition: 1s;
 }
 /* ? End Testimonials */
 /* SLIDER */
@@ -537,10 +545,11 @@ header .hero .img-holder > img {
   margin-bottom: 4rem;
 }
 
-/* ! Start SignUP Section */
+/* ! Start SignUP Section 🔭 */
 .signup {
   padding-top: 10rem;
   padding-bottom: 10rem;
+  transition: 1s;
   background-color: #37383d;
   border-bottom: 0.1rem solid #ddd;
 }

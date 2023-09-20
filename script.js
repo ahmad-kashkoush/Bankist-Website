@@ -1,7 +1,8 @@
 'use strict'
 // selectors
 const overlay = document.querySelector('.overlay');
-const header = document.querySelector('header')
+const header = document.querySelector('header');
+const nav = document.querySelector('nav');
 //  Menu selectors 
 const toggleMenu = document.querySelector('.ham');
 const navLinks = document.querySelector('nav .links');
@@ -108,6 +109,13 @@ cookieMessage.style.height =
 // If you clicked 
 
 // 🔗🔗🔗 Page Navigation My code
+// learn more btn-scroll
+document
+    .querySelector('.btn-scroll')
+    .addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector('.features').scrollIntoView({ behavior: 'smooth' })
+    })
 // document.querySelectorAll('nav .links li a').forEach(function (el) {
 //     el.addEventListener('click', function (e) {
 //         e.preventDefault();
@@ -119,12 +127,12 @@ cookieMessage.style.height =
 // })
 //  In the above code you've create a function for each element which will fuck the performance
 // sol : Event Delegation ⭐⭐⭐
+
 navLinks.addEventListener('click', function (e) {
     e.preventDefault();
     if (e.target.classList.contains('nav_link')) {
         const sec = document.querySelector(e.target.getAttribute('href'))
         sec.scrollIntoView({ behavior: 'smooth' });
-        console.log('Love Event Delegation');
     }
 })
 
@@ -148,8 +156,9 @@ document
         }
 
     });
-//  Menu fading when hover on one of the links
+//  Menu fading when hover on one of the links 🍪🍪🍪🍪
 const changeOpacity = function (e, opacity) {
+
     if (e.target.classList.contains('nav_link')) {
         const targetLink = e.target;
         const siblings = targetLink.closest('.links').querySelectorAll('a');
@@ -166,6 +175,74 @@ document.querySelector('nav .container')
 
 document.querySelector('nav .container')
     .addEventListener('mouseout', changeOpacity.bind(1));
+
+
+
+
+//  Sticky navigation : Intersection Observer API
+const stickyNav = function (entries) {
+    const [entry] = entries;
+    // console.log(entry);
+    if (entry.isIntersecting)
+        nav.classList.remove('sticky');
+    else
+        nav.classList.add('sticky');
+
+
+}
+const navHeight = nav.getBoundingClientRect().height;
+const obsOptions = {
+    root: null,
+    threshold: 0,
+    rootMargin: `-${navHeight}px`,
+}
+const headerObserver = new IntersectionObserver(stickyNav, obsOptions);
+headerObserver.observe(document.querySelector('header'));
+//  My entrie isIntersecting=true if my intersection with the viewport is >=threshold
+
+// Sections Revealing
+const allSections = document.querySelectorAll('section');
+allSections.forEach((ele) => ele.classList.add('section-hidden'))
+const makeVisible = function (entries, observer) {
+    const [entry] = entries;
+    // console.log(entry.target);
+    if (!entry.isIntersecting) return;
+    entry.target.classList.remove('section-hidden');
+    observer.unobserve(entry.target);
+}
+const obsSectionOptions = {
+    root: null,
+    threshold: .15,
+}
+
+const sectionObserver = new IntersectionObserver(makeVisible, obsSectionOptions);
+allSections.forEach((ele) => sectionObserver.observe(ele))
+
+// console.log();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // LEC ## Dom Traversing 

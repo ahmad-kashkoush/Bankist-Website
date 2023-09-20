@@ -56,6 +56,10 @@
   transition: all 0.3s;
 }
 /* ? End  Btn */
+.section-hidden {
+  opacity: 0;
+  transform: traslateY(8rem);
+}
 
 /* ? End  Components */
 /* ! Start Colors */
