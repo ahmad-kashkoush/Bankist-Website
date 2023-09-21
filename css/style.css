@@ -694,7 +694,16 @@ footer span {
   color: #bbb;
   font-size: 1.5rem;
   font-weight: 400;
-  margin-bottom: -2rem;
+  /* margin-bottom: -2rem; */
+  position: fixed;
+  bottom: 0;
+  z-index: 101;
+}
+@media (max-width: 700px) {
+  .cookie-message {
+    display: block;
+    text-align: center;
+  }
 }
 
 /* ? End Modal */
