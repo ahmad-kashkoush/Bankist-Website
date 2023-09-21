@@ -60,6 +60,10 @@
   opacity: 0;
   transform: traslateY(8rem);
 }
+img.lazy-img {
+  /* display: none; */
+  filter: blur(10px);
+}
 
 /* ? End  Components */
 /* ! Start Colors */

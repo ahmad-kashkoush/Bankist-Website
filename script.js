@@ -218,23 +218,70 @@ const obsSectionOptions = {
 const sectionObserver = new IntersectionObserver(makeVisible, obsSectionOptions);
 allSections.forEach((ele) => sectionObserver.observe(ele))
 
-// console.log();
+
+//  ! Lazy loading Images
+const allImages = document.querySelectorAll('img.feature-img');
+const enhanceImage = function (entries, observer) {
+    const [entry] = entries;
+    // console.log(entry);
+    if (!entry.isIntersecting) return;
+    if (!entry.target.classList.contains('lazy-img')) return;
+    entry.target.src = entry.target.dataset.src;
+    // to make it remove filter after reloading img
+    entry.target.addEventListener('load', function () {
+        entry.target.classList.remove('lazy-img');
 
 
+    })
+    observer.unobserve(entry.target);
 
+}
+const obsImgOptions = {
+    root: null,
+    threshold: 0,
+    rootMargin: '-200px'
+}
+const imgObserver = new IntersectionObserver(enhanceImage, obsImgOptions);
+allImages.forEach((image) => imgObserver.observe(image));
 
+// Slider 🛝🛝🛝
+const allSlides = document.querySelectorAll('.slide');
+allSlides.forEach((sld, i) => {
+    sld.style.transform = `translateX(${i * 100}%)`;
+});
 
+let curSlide = 0;
+const n = allSlides.length;
+const slidBtnLeft = document.querySelector('.slider__btn--left');
+const slideBtnRight = document.querySelector('.slider__btn--right');
 
+const goToSlide = function (slide) {
+    allSlides.forEach((sld, i) => {
+        let val = 100 * (i - slide);
+        sld.style.transform = `translateX(${val}%)`;
+    });
+}
+goToSlide(0);
+const prevSlide = function () {
+    if (curSlide === 0)
+        curSlide = n - 1;
+    else curSlide--;
+    goToSlide(curSlide);
 
+}
+const nextSlide = function () {
+    if (curSlide === n - 1) curSlide = 0;
+    else curSlide++;
+    goToSlide(curSlide)
+}
+slidBtnLeft.addEventListener('click', prevSlide);
 
+slideBtnRight.addEventListener('click', nextSlide);
 
-
-
-
-
-
-
-
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') prevSlide();
+    else if (e.key === 'ArrowRight') nextSlide();
+})
 
 
 

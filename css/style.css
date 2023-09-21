@@ -694,6 +694,7 @@ footer span {
   color: #bbb;
   font-size: 1.5rem;
   font-weight: 400;
+  margin-bottom: -2rem;
 }
 
 /* ? End Modal */
