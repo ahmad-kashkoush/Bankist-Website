@@ -25,6 +25,7 @@ html {
 }
 
 body {
+  position: relative;
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
   color: #444;
@@ -104,22 +105,22 @@ nav .container .links .btn {
 @media (max-width: 700px) {
   nav .container .links {
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 101;
     font-size: 2rem;
     font-weight: 500;
+    z-index: 101;
   }
   nav .container .ham {
     display: inline;
-    position: relative;
     z-index: 101;
   }
   nav .container .links a,
   nav .container .links button {
     color: #fff;
+    z-index: 101;
   }
 }
 /* ? End Navbar */
@@ -631,7 +632,7 @@ footer span {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
-  z-index: 100;
+  z-index: 101;
   transition: all 0.5s;
 }
 
