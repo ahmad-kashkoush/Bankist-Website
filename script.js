@@ -1,46 +1,17 @@
 'use strict'
 // selectors
-const overlay = document.querySelector('.overlay');
+
 const header = document.querySelector('header');
 const nav = document.querySelector('nav');
 //  Menu selectors 
-const toggleMenu = document.querySelector('.ham');
+
 const navLinks = document.querySelector('nav .links');
 //  Modal window Selectors
 const modal = document.querySelector('.modal');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const overlay=document.querySelector(".overlay");
 
-// functions
-
-
-// event
-// ! Menu Responsive 😎
-const openMenu = function () {
-    navLinks.classList.remove('off-mobile');
-    toggleMenu.classList.add('c-white');
-    overlay.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-}
-const closeMenu = function () {
-    navLinks.classList.add('off-mobile');
-    toggleMenu.classList.remove('c-white');
-    overlay.classList.add('hidden');
-    document.body.style.overflow = 'auto';
-
-}
-let opened = false;
-const toggleMenuFun = () => {
-    if (opened) closeMenu();
-    else openMenu();
-    opened = !opened;
-}
-toggleMenu.addEventListener('click', toggleMenuFun);
-document.addEventListener('click', function (e) {
-    if (e.target.classList.contains('overlay')
-        || e.target.classList.contains('nav_link') && !navLinks.classList.contains('off-mobile'))
-        closeMenu();
-});
 // ! Modal Window 🪟
 
 
